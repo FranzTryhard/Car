@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Verse;
+use App\Models\Car;
 
-Route::get('/daily-verse', function () {
-    return Verse::inRandomOrder()->first();
+Route::get('/random-car', function () {
+    return Car::inRandomOrder()->first();
 });
 
-Route::get('/Verse', function () {
-    return Verse::all();
+Route::get('/cars', function () {
+    return Car::all();
 });
