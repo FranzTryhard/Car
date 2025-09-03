@@ -10,3 +10,4 @@ Route::get('/random-car', function () {
 Route::get('/cars', function () {
     return Car::all();
 });
+
