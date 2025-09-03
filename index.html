@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Car List</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Cars</h1>
+    <ul id="car-list">
+      <!-- Car list will populate here -->
+    </ul>
+    <button id="random-car-btn">Show me a random car</button>
+    <div id="random-car-display" class="random-car"></div>
+  </div>
+
+  <script>
+    const carListEl = document.getElementById('car-list');
+    const randomCarBtn = document.getElementById('random-car-btn');
+    const randomCarDisplay = document.getElementById('random-car-display');
+
+    const apiBaseUrl = 'http://localhost:8000/api/cars';
+    const randomCarUrl = 'http://localhost:8000/api/random-car';
+
+    // Fetch and show all cars
+    fetch(apiBaseUrl)
+      .then(res => res.json())
+      .then(data => {
+        data.forEach(car => {
+          const li = document.createElement('li');
+          li.textContent = `${car.name} - ${car.creator}`;
+          carListEl.appendChild(li);
+        });
+      })
+      .catch(() => {
+        carListEl.textContent = 'Failed to load cars.';
+      });
+
+    // Fetch and display random car on button click
+    randomCarBtn.addEventListener('click', () => {
+      fetch(randomCarUrl)
+        .then(res => res.json())
+        .then(car => {
+          randomCarDisplay.style.display = 'block';
+          randomCarDisplay.innerHTML = `
+  <div class="car-name">${car.name}</div>
+  <div class="car-creator">by ${car.creator}</div>
+  <div class="car-description">${car.description}</div>
+`;
+        })
+        .catch(() => {
+          randomCarDisplay.style.display = 'block';
+          randomCarDisplay.textContent = 'Failed to load a random car.';
+        });
+    });
+  </script>
+</body>
+</html>
