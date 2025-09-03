@@ -5,21 +5,29 @@ The Cars Model API allows developers to access and manage detailed information a
 
 ## Project Overview
 This API returns JSON data about cars. It has two main functions:
+
 List all the cars available.
+
 Return a random car from the list.
 
 ## Installation and Setup
 This project uses Laravel 12.26.4 and PHP 8.2.12 (as per Laravel documentation).
+
 The project files are stored locally in the htdocs folder of XAMPP.
+
 
 ## Requirements
 PHP 8.2.12 or higher
+
 Laravel 12.26.4
+
 MySQL server (via XAMPP)
 
 ## Setup Steps
 Clone this repository into your XAMPP htdocs folder.
+
 Copy .env.example to .env and update database credentials if needed.
+
 Run database migrations and seeders:
 
    ```bash
